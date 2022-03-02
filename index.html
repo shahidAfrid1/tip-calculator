@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Inspiration&family=Inter:wght@400;700&family=Josefin+Sans:wght@300;400;600&family=Kumbh+Sans:wght@400;700&family=Poppins:wght@400;500&family=Rubik:wght@400;500&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/app/sass/style.css" />
+
+    <script src="/app/script/script.js" defer></script>
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <main class="flex flex-jc-c flex-ai-c">
+      <h1>SPLI<br />TTER</h1>
+      <div class="calculator">
+        <form action="#">
+          <div class="input">
+            <div class="input-title m-bill">Bill</div>
+            <label for="billAmount">
+              <img src="/images/icon-dollar.svg" alt="" />
+              <input
+                type="number"
+                name="bill"
+                id="bill"
+                dir="rtl"
+                placeholder="0"
+                class="m-i-bill"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              />
+            </label>
+            <div class="input-title m-tip">Select Tip %</div>
+            <div class="percentage-box">
+              <div class="percentage" onclick="return 5">5%</div>
+              <div class="percentage">10%</div>
+              <div class="percentage active">15%</div>
+              <div class="percentage">25%</div>
+              <div class="percentage">50%</div>
+              <input
+                type="number"
+                name="custom"
+                id="custom"
+                dir="rtl"
+                placeholder="Custom"
+                class="custom"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              />
+            </div>
+            <div class="input-title m-ple">Number of People</div>
+            <label for="plecount">
+              <img src="/images/icon-person.svg" alt="" />
+              <input
+                type="number"
+                name="noofpeople"
+                id="noOfPeople"
+                dir="rtl"
+                placeholder="0"
+                class="m-i-ple error"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+              />
+              <span class="error-msg">Can't be zero</span>
+            </label>
+          </div>
+          <div class="output">
+            <div class="output-display">
+              <div class="title">
+                <p>Tip Amount</p>
+                <span>/ person</span>
+              </div>
+              <div class="amount">$0.00</div>
+            </div>
+            <div class="output-display">
+              <div class="title">
+                <p>Total</p>
+                <span>/ person</span>
+              </div>
+              <div class="amount">$0.00</div>
+            </div>
+
+            <button type="reset">RESET</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>

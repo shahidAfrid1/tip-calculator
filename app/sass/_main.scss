@@ -1,0 +1,228 @@
+main {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $Lightgrayishcyanmore;
+  padding-top: 180px;
+
+  @include tbl {
+    padding-bottom: 180px;
+  }
+
+  @include lgl {
+    padding: 21.112% 0 16.32% 0;
+  }
+  > h1 {
+    position: absolute;
+    font-size: 20px;
+    color: $Verydarkcyan;
+    letter-spacing: 5px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include lgl {
+      top: 15%;
+    }
+  }
+
+  .calculator {
+    width: 100%;
+    padding: 32px;
+    background-color: $White;
+    border-radius: 20px 20px 0 0;
+    @include tbl {
+      width: 480px;
+      border-radius: 20px;
+    }
+
+    @include sml {
+      width: 90%;
+      height: 50%;
+    }
+
+    @include lgl {
+      width: 918px;
+      height: 484px;
+    }
+
+    > form {
+      @include sml {
+        display: flex;
+      }
+      .input {
+        @include sml {
+          width: 55%;
+          padding-right: 31px;
+        }
+        &-title {
+          font-size: 14px;
+          font-weight: 700;
+          color: $Darkgrayishcyanmore;
+
+          &.m-bill {
+            margin-bottom: 14px;
+          }
+          &.m-tip {
+            margin-bottom: 18px;
+          }
+          &.m-ple {
+            margin-bottom: 10px;
+          }
+        }
+
+        > label {
+          position: relative;
+
+          > img {
+            position: absolute;
+            top: 2px;
+            left: 15px;
+          }
+
+          > input {
+            width: 100%;
+            height: 47px;
+            background-color: $Lighgrayishcyan;
+            border: none;
+            border-radius: 5px;
+            padding: 0 20px 0 31px;
+            font-size: 22px;
+            color: $Verydarkcyan;
+            font-family: "Space Mono", monospace;
+            font-weight: 700;
+            &.m-i-bill {
+              margin-bottom: 37px;
+            }
+            &.m-i-ple {
+              margin-bottom: 31px;
+              
+            }
+
+            
+            
+            &[type="number"] {
+              appearance: textfield;
+            }
+
+            &:focus {
+              outline: 2px solid $Strongcyan;
+            }
+
+            &::placeholder {
+              font-size: 20px;
+              font-weight: 700;
+              font-family: "Space Mono", monospace;
+              color: $Darkgrayishcyan;
+            }
+          }
+          .error-msg {
+            position: absolute;
+            bottom: 42px;
+            right: 0%;
+            color: #db8400;
+            opacity: 0;
+            &.active{
+              opacity: 1;
+            }
+          }
+        }
+
+        .percentage-box {
+          display: grid;
+          grid-template-columns: 50% 50%;
+          gap: 20px;
+          width: calc(100% - 32px + 12px);
+          margin-bottom: 40px;
+
+          @include sml {
+            grid-template-columns: 33% 33% 33%;
+          }
+          .percentage {
+            text-align: center;
+            padding: 11px;
+            font-size: 21px;
+            font-weight: 700;
+            background-color: $Verydarkcyan;
+            color: $Lightgrayishcyanmore;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+              background-color: $Strongcyan;
+              color: $Verydarkcyan;
+            }
+            &.active{
+              background-color: $Strongcyan;
+              color: $Verydarkcyan;
+            }
+          }
+
+          .custom {
+            border: none;
+            background-color: $Lighgrayishcyan;
+            color: $Verydarkcyan;
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 5px;
+            font-family: "Space Mono", monospace;
+            &:focus {
+              outline: 2px solid $Strongcyan;
+            }
+            &[type="number"] {
+              appearance: textfield;
+            }
+          }
+        }
+      }
+
+      .output {
+        width: 100%;
+        background-color: $Verydarkcyan;
+        border-radius: 15px;
+        padding: 45px 25px 25px 25px;
+        @include sml {
+          width: 50%;
+        }
+        &-display {
+          display: flex;
+          justify-content: space-between;
+          .title {
+            font-size: 17px;
+            font-weight: 700;
+            color: $Lightgrayishcyanmore;
+            margin-bottom: 33px;
+            > span {
+              font-size: 14px;
+              color: $Darkgrayishcyan;
+            }
+          }
+          .amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: $Strongcyan;
+            @include lgl {
+              font-size: 39px;
+            }
+          }
+        }
+
+        > button {
+          width: 100%;
+          height: 50px;
+          background-color: $Strongcyan;
+          color: $Verydarkcyan;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: 700;
+          cursor: pointer;
+
+          @include sml {
+            margin-top: 145px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -159,6 +159,7 @@ main .calculator > form .input > label > input {
   color: #00494d;
   font-family: "Space Mono", monospace;
   font-weight: 700;
+  text-align: right;
 }
 
 main .calculator > form .input > label > input.m-i-bill {

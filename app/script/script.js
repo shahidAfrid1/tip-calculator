@@ -5,38 +5,7 @@ const perBtn = document.querySelectorAll(".percentage");
 const errorMsg = document.querySelector(".error-msg");
 const display = document.querySelectorAll(".amount");
 
-bill.addEventListener("keypress", function (e) {
-  var allowedChars = "0123456789.";
-  function contains(stringValue, charValue) {
-    return stringValue.indexOf(charValue) > -1;
-  }
-  var invalidKey =
-    (e.key.length === 1 && !contains(allowedChars, e.key)) ||
-    (e.key === "." && contains(e.target.value, "."));
-  invalidKey && e.preventDefault();
-});
 
-customPercentage.addEventListener("keypress", function (e) {
-  var allowedChars = "0123456789";
-  function contains(stringValue, charValue) {
-    return stringValue.indexOf(charValue) > -1;
-  }
-  var invalidKey =
-    (e.key.length === 1 && !contains(allowedChars, e.key)) ||
-    (e.key === "." && contains(e.target.value, "."));
-  invalidKey && e.preventDefault();
-});
-
-PeopleCount.addEventListener("keypress", function (e) {
-    var allowedChars = "0123456789";
-    function contains(stringValue, charValue) {
-      return stringValue.indexOf(charValue) > -1;
-    }
-    var invalidKey =
-      (e.key.length === 1 && !contains(allowedChars, e.key)) ||
-      (e.key === "." && contains(e.target.value, "."));
-    invalidKey && e.preventDefault();
-  });
 let billValue = 0.0;
 
 let tipPercentage = 0.15;
@@ -45,6 +14,15 @@ let pleCount = 1;
 
 PeopleCount.value = 1;
 
+function validateFloat(str){
+  var regex = /^[0-9]*\.?[0-9]*$/;
+  return str.match(regex)
+}
+
+function validateInt(str){
+  var regex = /^[0-9]*$/;
+  return str.match(regex)
+}
 bill.addEventListener("input", setBill);
 
 perBtn.forEach((element) => {
@@ -56,6 +34,10 @@ customPercentage.addEventListener("input", setCustomPercentage);
 PeopleCount.addEventListener("input", setPeopleCount);
 
 function setBill() {
+
+  if(!validateFloat(bill.value)){
+    bill.value = bill.value.substring(0,bill.value.length -1)
+  }
   billValue = parseFloat(bill.value);
   calculateTip();
 }
@@ -73,16 +55,23 @@ function handlePercentage(event) {
 }
 
 function setCustomPercentage() {
+  if(!validateInt(customPercentage.value)){
+    customPercentage.value = customPercentage.value.substring(0,customPercentage.value.length -1)
+  }
+  
+  tipPercentage = parseFloat(customPercentage.value) / 100;
   perBtn.forEach((btn) => {
     btn.classList.remove("active");
   });
-  tipPercentage = parseFloat(customPercentage.value) / 100;
   if (customPercentage.value != "") {
     calculateTip();
   }
 }
 
 function setPeopleCount() {
+  if(!validateInt(PeopleCount.value)){
+    PeopleCount.value = PeopleCount.value.substring(0,PeopleCount.value.length-1)
+  }
   pleCount = parseFloat(PeopleCount.value);
   if (pleCount <= 0) {
     errorMsg.classList.add("active");
